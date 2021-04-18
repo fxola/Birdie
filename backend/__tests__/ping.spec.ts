@@ -1,4 +1,4 @@
-import app from '../src/application'
+import app from '../src/application';
 import * as request from 'supertest';
 
 describe('We are grateful to you for doing this it.', () => {
@@ -9,5 +9,5 @@ describe('We are grateful to you for doing this it.', () => {
       .expect(function(res) {
         expect(res.body.greetings).toContain('Thank you');
       });
-  })
+  });
 });
