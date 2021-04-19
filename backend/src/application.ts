@@ -1,7 +1,7 @@
-import * as express from "express";
-import * as cors from "cors";
-import { eventsController } from "./controllers/events";
-import { pingController } from "./controllers/ping";
+import * as express from 'express';
+import * as cors from 'cors';
+import { eventsController } from './controllers/events';
+import { pingController } from './controllers/ping';
 
 const app = express();
 
@@ -9,23 +9,10 @@ app.use(cors());
 app.use(pingController);
 app.use(eventsController);
 
-app.use((_, __, next) => {
-  let error = {
-    message: new Error("You are trying to access a wrong Route"),
-    status: 400,
-    success: false
-  };
-  next(error);
-});
-
-//@ts-ignore
-app.use((error: Error & { status: number }, _, response: express.Response) => {
-  response.status(error.status || 500);
-  response.json({
-    status: error.status || 500,
-    error: error.name,
-    message: error.message
-  });
+app.get('*', (_, response: express.Response) => {
+  response
+    .status(404)
+    .json({ status: 404, message: 'Route does not exist', success: false });
 });
 
 export default app;

@@ -14,7 +14,7 @@ const eventKeys = {
   metabolism: MetabolismEvents,
 };
 
-const generateError = (status: number, message: string) => ({
+export const generateError = (status: number, message: string) => ({
   status,
   message,
   success: false,
