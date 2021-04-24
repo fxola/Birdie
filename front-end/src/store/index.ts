@@ -1,26 +1,20 @@
-import { applyMiddleware, compose, createStore, GenericStoreEnhancer } from 'redux';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
-import createBrowserHistory from 'history/createBrowserHistory';
-import { rootReducer } from '@App/store/reducers';
+import { rootReducer } from '@App/store/root-reducer';
 import initSaga from '@App/store/sagas';
 
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION__: () => undefined;
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: (arg: GenericStoreEnhancer) => undefined;
-  }
-}
+let sagaMiddleware = createSagaMiddleware();
+const middleware = [...getDefaultMiddleware({ thunk: false }), sagaMiddleware];
 
-const sagaMiddleware = createSagaMiddleware();
-export const history = createBrowserHistory();
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(sagaMiddleware)),
-);
+const store = configureStore({
+  reducer: rootReducer,
+  middleware,
+});
 
 sagaMiddleware.run(initSaga);
+
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
 
 export default store;
