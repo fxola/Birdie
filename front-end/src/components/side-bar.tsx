@@ -7,7 +7,17 @@ import Wrapper from './wrapper';
 import Logo from './logo';
 import SubTitle from './sub-title';
 
-import { LogoUrl } from '@App/constants/images';
+import {
+  LogoUrl,
+  wellbeingActiveUrl,
+  wellbeingUrl,
+  medicationActiveUrl,
+  medicationUrl,
+  metabolismActiveUrl,
+  metabolismUrl,
+  alertActiveUrl,
+  alertsUrl,
+} from '@App/constants/images';
 import theme from '@App/constants/colors';
 const { primaryGreen, primaryBlue } = theme;
 
@@ -26,13 +36,15 @@ const SideBarWrapper = styled(Wrapper)`
 const SideBarItem = styled(Wrapper)<TabProp>`
   height: 40px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
   cursor: pointer;
 `;
 
 const Tab = styled(Text)<TabProp>`
   color: ${props => (props.active ? primaryGreen : primaryBlue)};
+  font-size: 14px;
+  font-weight: 700;
 `;
 
 const TabLogo = styled(Logo)`
@@ -41,13 +53,23 @@ const TabLogo = styled(Logo)`
   margin-bottom: 20px;
 `;
 
+const TabIcon = styled(Logo)`
+  height: 20px;
+  width: 20px;
+  margin-right: 20px;
+`;
+
 interface StateType {
   id: string;
   name: string;
 }
 
-const Sidebar = () => {
-  const [active, setActive] = React.useState<EventType>('wellbeing');
+interface SideBarProp {
+  active: EventType;
+  setActive: React.Dispatch<React.SetStateAction<EventType>>;
+}
+
+const Sidebar = ({ active, setActive }: SideBarProp) => {
   const wellbeingActive = active === 'wellbeing';
   const metabolismActive = active === 'metabolism';
   const alertActive = active === 'alert';
@@ -60,6 +82,7 @@ const Sidebar = () => {
   const {
     state: { name, id },
   } = useLocation<StateType>();
+
   return (
     <SideBarWrapper>
       <TabLogo src={LogoUrl} />
@@ -70,24 +93,44 @@ const Sidebar = () => {
         active={wellbeingActive}
         onClick={() => handleTabSelect('wellbeing', id)}
       >
+        {wellbeingActive ? (
+          <TabIcon src={wellbeingActiveUrl} />
+        ) : (
+          <TabIcon src={wellbeingUrl} />
+        )}
         <Tab active={wellbeingActive}>Wellbeing</Tab>
       </SideBarItem>
       <SideBarItem
         active={metabolismActive}
         onClick={() => handleTabSelect('metabolism', id)}
       >
+        {metabolismActive ? (
+          <TabIcon src={metabolismActiveUrl} />
+        ) : (
+          <TabIcon src={metabolismUrl} />
+        )}
         <Tab active={metabolismActive}>Metabolism</Tab>
       </SideBarItem>
       <SideBarItem
         active={alertActive}
         onClick={() => handleTabSelect('alert', id)}
       >
+        {alertActive ? (
+          <TabIcon src={alertActiveUrl} />
+        ) : (
+          <TabIcon src={alertsUrl} />
+        )}
         <Tab active={alertActive}>Alerts</Tab>
       </SideBarItem>
       <SideBarItem
         active={medicationActive}
         onClick={() => handleTabSelect('medication', id)}
       >
+        {medicationActive ? (
+          <TabIcon src={medicationActiveUrl} />
+        ) : (
+          <TabIcon src={medicationUrl} />
+        )}
         <Tab active={medicationActive}>Medication</Tab>
       </SideBarItem>
     </SideBarWrapper>

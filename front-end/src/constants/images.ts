@@ -1,1 +1,11 @@
 export const LogoUrl = require('../assets/images/logo-birdie.svg');
+export const alertRaisedUrl = require('../assets/images/alert-raised.svg');
+export const alertConfirmedUrl = require('../assets/images/alert-confirmed.svg');
+export const alertActiveUrl = require('../assets/images/alerts-active.svg');
+export const alertsUrl = require('../assets/images/alerts.svg');
+export const medicationActiveUrl = require('../assets/images/medication-active.svg');
+export const medicationUrl = require('../assets/images/medication.svg');
+export const metabolismActiveUrl = require('../assets/images/metabolism-active.svg');
+export const metabolismUrl = require('../assets/images/metabolism.svg');
+export const wellbeingUrl = require('../assets/images/wellbeing.svg');
+export const wellbeingActiveUrl = require('../assets/images/wellbeing-active.svg');

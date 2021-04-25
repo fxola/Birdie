@@ -34,14 +34,21 @@ const Home = () => {
       <Content>
         <SubTitle>Choose a family member</SubTitle>
         <RecipientWrapper>
-          <RecipientCard name={'Ray Penber'} id={'sdssd'} />
+          <RecipientCard
+            name={'Mereoleona Vermillion'}
+            id={'e3e2bff8-d318-4760-beea-841a75f00227'}
+          />
           <RecipientCard
             name={'Levi Ackerman'}
-            id={'sdssd'}
+            id={'df50cac5-293c-490d-a06c-ee26796f850d'}
             color="white"
             textColor={'black'}
           />
-          <RecipientCard name={'Eren Jaeger'} id={'sdssd'} color={'#00254d'} />
+          <RecipientCard
+            name={'Isaac Netero'}
+            id={'ad3512a6-91b1-4d7d-a005-6f8764dd0111'}
+            color={'#00254d'}
+          />
         </RecipientWrapper>
       </Content>
     </Container>
