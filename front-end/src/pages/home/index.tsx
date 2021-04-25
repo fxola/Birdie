@@ -3,12 +3,10 @@ import styled from 'styled-components';
 
 import RecipientCard from '@App/components/recipient-card';
 import RowWrapper from '@App/components/row-wrapper';
-// import Title from '@App/components/title';
 import Wrapper from '@App/components/wrapper';
 import SubTitle from '@App/components/sub-title';
 import Logo from '@App/components/logo';
-
-const LogoUrl = require('../../assets/images/logo-birdie.svg');
+import { LogoUrl } from '@App/constants/images';
 
 const Container = styled.div`
   width: 60%;
@@ -34,7 +32,7 @@ const Home = () => {
     <Container>
       <Logo src={LogoUrl} />
       <Content>
-        <SubTitle>Choose Family member</SubTitle>
+        <SubTitle>Choose a family member</SubTitle>
         <RecipientWrapper>
           <RecipientCard name={'Ray Penber'} id={'sdssd'} />
           <RecipientCard

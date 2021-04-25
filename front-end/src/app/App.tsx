@@ -1,12 +1,9 @@
 import * as React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-// import Title from '@App/components/title';
-// import Logo from '@App/components/logo';
-// import SubTitle from '@App/components/sub-title';
 import Home from '@App/pages/home';
-
-// const LogoUrl = require('../assets/images/logo-birdie.svg');
+import Dashboard from '@App/pages/dashboard';
 
 interface AppProps {}
 
@@ -41,10 +38,12 @@ class App extends React.Component<AppProps, AppState> {
       <>
         <GlobalStyle />
         <AppContainer>
-          <Home />
-          {/* <Logo src={LogoUrl} />
-          <Title>Welcome to the birdie test</Title>
-          <SubTitle>Best of luck!</SubTitle> */}
+          <Router>
+            <Switch>
+              <Route exact={true} path="/" component={Home} />
+              <Route path="/dashboard" component={Dashboard} />
+            </Switch>
+          </Router>
         </AppContainer>
       </>
     );
