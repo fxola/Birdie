@@ -1,7 +1,11 @@
-import theme from '@App/constants/colors';
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+
+import theme from '@App/constants/colors';
+import { useAppDispatch } from '@App/hooks/useReduxActions';
+import { setDashboardPath } from '@App/store/slices/dashboard';
+
 import Text from './text';
 
 const Card = styled.div`
@@ -27,8 +31,10 @@ interface Prop {
 
 const RecipientCard = ({ name, id, color, textColor = 'white' }: Prop) => {
   const history = useHistory();
+  const dispatch = useAppDispatch();
 
   const navigate = () => {
+    dispatch(setDashboardPath({ id, tab: 'wellbeing' }));
     history.push('/dashboard', { id, name });
   };
 

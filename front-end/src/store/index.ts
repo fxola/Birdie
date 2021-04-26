@@ -4,7 +4,7 @@ import { rootReducer } from '@App/store/root-reducer';
 import initSaga from '@App/store/sagas';
 
 let sagaMiddleware = createSagaMiddleware();
-const middleware = [...getDefaultMiddleware({ thunk: false }), sagaMiddleware];
+const middleware = getDefaultMiddleware().concat(sagaMiddleware);
 
 const store = configureStore({
   reducer: rootReducer,

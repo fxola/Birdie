@@ -4,18 +4,22 @@ import RowWrapper from './row-wrapper';
 import SubTitle from './sub-title';
 import Text from './text';
 import Wrapper from './wrapper';
+import { truncate } from '@App/helper';
 
 const Card = styled.div`
   height: auto;
   min-height: 50px;
-  width: 60vw;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  padding: 0 40px 10px 40px;
-  margin: 5px 0 5px 0;
+  padding: 0 20px 0px 20px;
+  margin: 10px;
+`;
+
+const EventText = styled(Text)`
+  padding-top: 3px;
 `;
 
 const SeverityWrapper = styled(Wrapper)`
@@ -49,7 +53,8 @@ const EventSubtitle = styled(SubTitle)`
 `;
 
 const DetailWrapper = styled(RowWrapper)`
-  height: 30px;
+  height: 40px;
+  border-top: 0.1px solid #dadada;
 `;
 
 interface Props {
@@ -60,9 +65,8 @@ interface Props {
   meal?: string;
   eventType: string;
   volume?: string;
-  severityColor: string;
+  severityColor?: string;
 }
-
 const EventResultCard = ({
   timeStamp,
   severity,
@@ -77,15 +81,15 @@ const EventResultCard = ({
     <Card>
       <RowWrapper>
         <EventWrapper>
-          <Text>{timeStamp}</Text>
+          <EventText style={{ width: '60%' }}>{timeStamp}</EventText>
           <EventTypeWrapper>
-            <Text>{eventType}</Text>
+            <EventText>{eventType}</EventText>
           </EventTypeWrapper>
         </EventWrapper>
         {severity && (
           <SeverityWrapper>
-            <SeverityColor color={severityColor} />
-            <Text>{severity}</Text>
+            <SeverityColor color={severityColor!} />
+            <EventText>{severity}</EventText>
           </SeverityWrapper>
         )}
       </RowWrapper>
@@ -93,14 +97,14 @@ const EventResultCard = ({
       {mood && (
         <DetailWrapper>
           <EventSubtitle>Mood:</EventSubtitle>
-          <Text> {mood}</Text>
+          <EventText> {mood}</EventText>
         </DetailWrapper>
       )}
 
       {meal && (
         <DetailWrapper>
           <EventSubtitle>Meal:</EventSubtitle>
-          <Text> {meal}</Text>
+          <EventText> {meal}</EventText>
         </DetailWrapper>
       )}
 
@@ -108,11 +112,11 @@ const EventResultCard = ({
         <>
           <DetailWrapper>
             <EventSubtitle>Volume (ml):</EventSubtitle>
-            <Text> {volume}</Text>
+            <EventText> {volume}</EventText>
           </DetailWrapper>
           <DetailWrapper>
             <EventSubtitle>Normal daily volume range (ml):</EventSubtitle>
-            <Text> 800 - 2000</Text>
+            <EventText> 800 - 2000</EventText>
           </DetailWrapper>
         </>
       )}
@@ -120,7 +124,7 @@ const EventResultCard = ({
       {note && (
         <DetailWrapper>
           <EventSubtitle>Note:</EventSubtitle>
-          <Text> {note}</Text>
+          <EventText> {truncate(note, 110)}</EventText>
         </DetailWrapper>
       )}
     </Card>

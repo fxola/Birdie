@@ -30,3 +30,11 @@ export const getSeverityColor = (severity: SeverityType) => {
 export const formatEvent = (event: EventEnum) => {
   return eventsMap[event];
 };
+
+export const truncate = (text: string, bound: number): string => {
+  return text.length > bound ? text.substr(0, bound) + '...' : text;
+};
+
+export const parseEvents = (events: string[]) => {
+  return events.map(e => JSON.parse(e));
+};
