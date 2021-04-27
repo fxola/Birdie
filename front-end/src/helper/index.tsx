@@ -3,7 +3,7 @@ import { EventEnum, SeverityType } from '@App/types';
 const severityMap = {
   HIGH: '#d04949',
   MEDIUM: 'palegoldenrod',
-  LOW: 'paleturquoise',
+  LOW: '#6a8a71',
 };
 
 const eventsMap = {

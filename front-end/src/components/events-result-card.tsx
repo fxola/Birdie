@@ -35,7 +35,7 @@ const SeverityColor = styled(Wrapper)<{ color: string }>`
   width: 15px;
   border-radius: 50%;
   background-color: ${p => p.color};
-  margin-right: 7px;
+  margin-left: 10px;
 `;
 
 const EventWrapper = styled(RowWrapper)`
@@ -65,7 +65,7 @@ interface Props {
   mood?: string;
   meal?: string;
   eventType: string;
-  volume?: string;
+  volume?: number;
   severityColor?: string;
 }
 const EventResultCard = ({
@@ -89,8 +89,8 @@ const EventResultCard = ({
         </EventWrapper>
         {severity && (
           <SeverityWrapper>
-            <SeverityColor color={severityColor!} />
             <EventText>{severity}</EventText>
+            <SeverityColor color={severityColor!} />
           </SeverityWrapper>
         )}
       </RowWrapper>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import Text from './text';
 import Wrapper from './wrapper';
@@ -11,8 +11,6 @@ import {
   LogoUrl,
   wellbeingActiveUrl,
   wellbeingUrl,
-  medicationActiveUrl,
-  medicationUrl,
   metabolismActiveUrl,
   metabolismUrl,
   alertActiveUrl,
@@ -22,8 +20,11 @@ import theme from '@App/constants/colors';
 const { primaryGreen, primaryBlue } = theme;
 
 import { EventType } from '../types';
-import { useAppDispatch } from '@App/hooks/useReduxActions';
-import { setDashboardPath } from '@App/store/slices/dashboard';
+import { useAppDispatch, useAppSelector } from '@App/hooks/useReduxActions';
+import {
+  globalPathSelector,
+  setDashboardPath,
+} from '@App/store/slices/dashboard';
 
 interface TabProp {
   active?: boolean;
@@ -78,9 +79,14 @@ const Sidebar = ({ active, setActive }: SideBarProp) => {
   const wellbeingActive = active === 'wellbeing';
   const metabolismActive = active === 'metabolism';
   const alertActive = active === 'alert';
-  const medicationActive = active === 'medication';
 
+  const history = useHistory();
   const dispatch = useAppDispatch();
+  const path = useAppSelector(globalPathSelector);
+
+  if (!path) {
+    history.goBack();
+  }
 
   const handleTabSelect = (tab: EventType, recipient: string) => {
     setActive(tab);
@@ -129,17 +135,6 @@ const Sidebar = ({ active, setActive }: SideBarProp) => {
           <TabIcon src={alertsUrl} />
         )}
         <Tab active={alertActive}>Alerts</Tab>
-      </SideBarItem>
-      <SideBarItem
-        active={medicationActive}
-        onClick={() => handleTabSelect('medication', id)}
-      >
-        {medicationActive ? (
-          <TabIcon src={medicationActiveUrl} />
-        ) : (
-          <TabIcon src={medicationUrl} />
-        )}
-        <Tab active={medicationActive}>Medication</Tab>
       </SideBarItem>
     </SideBarWrapper>
   );

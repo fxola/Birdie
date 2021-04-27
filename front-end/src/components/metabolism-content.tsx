@@ -78,6 +78,7 @@ const Metabolism = () => {
           eventType={formatEvent(result.event_type as EventEnum)}
           note={result.note}
           meal={result.meal}
+          volume={result?.volume_ml}
         />
       );
     });

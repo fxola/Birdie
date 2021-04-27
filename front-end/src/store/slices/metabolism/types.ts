@@ -7,6 +7,7 @@ export interface MetabolismResult {
   timestamp: string;
   event_type: string;
   meal: string;
+  volume_ml: number;
   caregiver_id: string;
   care_recipient_id: string;
 }
