@@ -15,15 +15,11 @@ import { globalPathSelector } from '@App/store/slices/dashboard';
 import { getWellbeingRequest } from '@App/store/slices/wellbeing/action';
 import Title from './title';
 import { formatEvent } from '@App/helper';
+import { CentralizedWrapper } from './centralized-wrapper';
 
 const WellBeingWrapper = styled(Wrapper)`
   height: 100vh;
   overflow-y: scroll;
-`;
-const CentralizedWrapper = styled(Wrapper)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const options = [

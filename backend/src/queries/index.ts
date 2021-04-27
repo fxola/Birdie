@@ -1,14 +1,14 @@
 import db from '../database';
 import { AlertEvents } from '../types';
 
-export const eventCount = (filters: Object) => {
+export const eventCount = (filters: object) => {
   return db('events')
     .count('payload_as_text', { as: 'total' })
     .where(filters);
 };
 
 export const paginatedEvents = (
-  filters: Object,
+  filters: object,
   limit: number,
   offset: number
 ) => {
@@ -20,7 +20,7 @@ export const paginatedEvents = (
     .offset(offset);
 };
 
-export const alertCount = (filter: Object, type: AlertEvents) => {
+export const alertCount = (filter: object, type: AlertEvents) => {
   return db('events')
     .count('alert_id', { as: type })
     .where(filter);

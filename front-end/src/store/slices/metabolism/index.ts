@@ -2,12 +2,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '@App/store/root-reducer';
 import { MetabolismEvents } from '@App/types';
 import { MetabolismState } from './types';
+import { getMetabolismReducer } from './reducer';
 
 const initialState: MetabolismState = {
   type: MetabolismEvents.food_intake_observation,
   isLoading: false,
   success: false,
   results: [],
+  current_page: 1,
+  last_page: 1,
+  error: null,
 };
 
 export const metabolismSlice = createSlice({
@@ -18,11 +22,13 @@ export const metabolismSlice = createSlice({
       state.type = action.payload;
     },
   },
-  extraReducers: {},
+  extraReducers: {
+    ...getMetabolismReducer,
+  },
 });
 
 export const { setMetabolismType } = metabolismSlice.actions;
-export const metabolismTypeSelector = (state: RootState) =>
-  state.metabolism.type;
+
+export const metabolismSelector = (state: RootState) => state.metabolism;
 
 export default metabolismSlice.reducer;

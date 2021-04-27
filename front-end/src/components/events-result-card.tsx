@@ -20,6 +20,7 @@ const Card = styled.div`
 
 const EventText = styled(Text)`
   padding-top: 3px;
+  font-size: 15px;
 `;
 
 const SeverityWrapper = styled(Wrapper)`

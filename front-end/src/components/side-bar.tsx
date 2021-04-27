@@ -22,6 +22,8 @@ import theme from '@App/constants/colors';
 const { primaryGreen, primaryBlue } = theme;
 
 import { EventType } from '../types';
+import { useAppDispatch } from '@App/hooks/useReduxActions';
+import { setDashboardPath } from '@App/store/slices/dashboard';
 
 interface TabProp {
   active?: boolean;
@@ -31,6 +33,9 @@ const SideBarWrapper = styled(Wrapper)`
   width: 20%;
   background-color: white;
   padding-left: 40px;
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 
 const SideBarItem = styled(Wrapper)<TabProp>`
@@ -75,8 +80,11 @@ const Sidebar = ({ active, setActive }: SideBarProp) => {
   const alertActive = active === 'alert';
   const medicationActive = active === 'medication';
 
+  const dispatch = useAppDispatch();
+
   const handleTabSelect = (tab: EventType, recipient: string) => {
     setActive(tab);
+    dispatch(setDashboardPath({ id: recipient, tab }));
   };
 
   const {

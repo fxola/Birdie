@@ -7,6 +7,7 @@ import Wrapper from '@App/components/wrapper';
 import SubTitle from '@App/components/sub-title';
 import Logo from '@App/components/logo';
 import { LogoUrl } from '@App/constants/images';
+import MediaQueryMwssage from '@App/components/media-query-message';
 
 const Container = styled.div`
   width: 60%;
@@ -14,6 +15,9 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 
 const Content = styled(Wrapper)`
@@ -29,29 +33,32 @@ const RecipientWrapper = styled(RowWrapper)`
 
 const Home = () => {
   return (
-    <Container>
-      <Logo src={LogoUrl} />
-      <Content>
-        <SubTitle>Choose a family member</SubTitle>
-        <RecipientWrapper>
-          <RecipientCard
-            name={'Mereoleona Vermillion'}
-            id={'e3e2bff8-d318-4760-beea-841a75f00227'}
-          />
-          <RecipientCard
-            name={'Levi Ackerman'}
-            id={'df50cac5-293c-490d-a06c-ee26796f850d'}
-            color="white"
-            textColor={'black'}
-          />
-          <RecipientCard
-            name={'Isaac Netero'}
-            id={'ad3512a6-91b1-4d7d-a005-6f8764dd0111'}
-            color={'#00254d'}
-          />
-        </RecipientWrapper>
-      </Content>
-    </Container>
+    <>
+      <Container>
+        <Logo src={LogoUrl} />
+        <Content>
+          <SubTitle>Choose a family member</SubTitle>
+          <RecipientWrapper>
+            <RecipientCard
+              name={'Mereoleona Vermillion'}
+              id={'e3e2bff8-d318-4760-beea-841a75f00227'}
+            />
+            <RecipientCard
+              name={'Levi Ackerman'}
+              id={'df50cac5-293c-490d-a06c-ee26796f850d'}
+              color="white"
+              textColor={'black'}
+            />
+            <RecipientCard
+              name={'Isaac Netero'}
+              id={'ad3512a6-91b1-4d7d-a005-6f8764dd0111'}
+              color={'#00254d'}
+            />
+          </RecipientWrapper>
+        </Content>
+      </Container>
+      <MediaQueryMwssage />
+    </>
   );
 };
 
