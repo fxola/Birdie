@@ -19,6 +19,7 @@ export interface AlertState {
   current_page: number;
   last_page: number;
   error: string | null;
+  hasMore: boolean;
 }
 export interface AlertSuccessResponse {
   total_alert_raised: number;

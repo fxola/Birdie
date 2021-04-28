@@ -20,6 +20,7 @@ export const getMetabolismReducer = {
         : parseEvents(events);
     state.current_page = current_page;
     state.last_page = last_page;
+    state.hasMore = current_page !== last_page;
   },
   [getMetabolismRequest.rejected.type]: (
     state: State,

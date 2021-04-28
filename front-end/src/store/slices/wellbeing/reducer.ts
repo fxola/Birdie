@@ -20,6 +20,7 @@ export const getWellbeingReducer = {
         : parseEvents(events);
     state.current_page = current_page;
     state.last_page = last_page;
+    state.hasMore = last_page !== current_page;
   },
   [getWellbeingRequest.rejected.type]: (
     state: State,

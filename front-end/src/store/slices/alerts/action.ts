@@ -3,16 +3,17 @@ import { Client } from '@App/helper/client';
 
 interface Payload {
   path: string;
+  page: number;
 }
 
 export const getAlertRequest = createAsyncThunk(
   'alert/getAlertRequest',
   async (data: Payload, { rejectWithValue }) => {
-    const { path } = data;
+    const { path, page } = data;
     try {
       const response = await Client({
         method: 'GET',
-        path: `${path}`,
+        path: `${path}?page=${page}`,
       });
 
       return response.data;

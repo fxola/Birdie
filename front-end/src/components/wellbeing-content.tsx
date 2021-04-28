@@ -16,6 +16,7 @@ import { getWellbeingRequest } from '@App/store/slices/wellbeing/action';
 import Title from './title';
 import { formatEvent } from '@App/helper';
 import { CentralizedWrapper } from './centralized-wrapper';
+import { useInterSectionObserver } from '@App/hooks/useIntersectionObserver';
 
 const WellBeingWrapper = styled(Wrapper)`
   height: 100vh;
@@ -43,17 +44,31 @@ const options = [
 
 const WellBeing = () => {
   const dispatch = useAppDispatch();
-  const { type, results, isLoading } = useAppSelector(wellbeingSelector);
   const path = useAppSelector(globalPathSelector);
+
+  const { type, results, isLoading, hasMore } = useAppSelector(
+    wellbeingSelector
+  );
+  const [page, setPage] = React.useState(1);
+
+  const incrementPage = React.useCallback(() => {
+    setPage(page + 1);
+  }, [page]);
 
   React.useEffect(() => {
     if (path.endsWith('wellbeing')) {
-      dispatch(getWellbeingRequest({ path, type }));
+      dispatch(getWellbeingRequest({ path, type, page }));
     }
-  }, [path, type]);
+  }, [path, type, page]);
+
+  const { lastElementRef } = useInterSectionObserver({
+    isLoading,
+    incrementPage,
+    hasMore,
+  });
 
   const renderContent = () => {
-    if (isLoading) {
+    if (isLoading && !results.length) {
       return (
         <CentralizedWrapper>
           <Title> Loading</Title>
@@ -69,7 +84,19 @@ const WellBeing = () => {
       );
     }
 
-    return results.map(result => {
+    return results.map((result, i) => {
+      if (results.length === i + 1) {
+        return (
+          <span ref={lastElementRef} key={result.id}>
+            <EventResultCard
+              timeStamp={result.timestamp}
+              eventType={formatEvent(result.event_type as EventEnum)}
+              note={result.note}
+            />
+          </span>
+        );
+      }
+
       return (
         <EventResultCard
           key={result.id}

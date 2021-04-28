@@ -12,6 +12,7 @@ const initialState: WellbeingState = {
   current_page: 1,
   last_page: 1,
   error: null,
+  hasMore: false,
 };
 
 export const wellbeingSlice = createSlice({

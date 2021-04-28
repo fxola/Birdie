@@ -12,6 +12,7 @@ const initialState: AlertState = {
   isLoading: false,
   success: false,
   error: null,
+  hasMore: false,
 };
 
 export const alertSlice = createSlice({
@@ -22,8 +23,6 @@ export const alertSlice = createSlice({
     ...getAlertReducer,
   },
 });
-
-export const {} = alertSlice.actions;
 
 export const alertSelector = (state: RootState) => state.alert;
 

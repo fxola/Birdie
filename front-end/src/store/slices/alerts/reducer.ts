@@ -14,17 +14,17 @@ export const getAlertReducer = {
     const {
       alert_qualified: { current_page, last_page, results },
     } = action.payload;
-
     state.isLoading = false;
     state.success = true;
-    state.last_page = last_page;
-    state.current_page = current_page;
     state.total_alert_raised = action.payload.total_alert_raised;
     state.total_alert_qualified = action.payload.total_alert_qualified;
     state.alert_qualified =
       state.current_page < current_page
         ? state.alert_qualified.concat(parseEvents(results))
         : parseEvents(results);
+    state.last_page = last_page;
+    state.current_page = current_page;
+    state.hasMore = current_page !== last_page;
   },
   [getAlertRequest.rejected.type]: (
     state: State,

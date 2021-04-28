@@ -17,6 +17,7 @@ export interface WellbeingState {
   current_page: number;
   last_page: number;
   error: string | null;
+  hasMore: boolean;
 }
 export interface WellbeingSuccessResponse {
   events: Array<string>;

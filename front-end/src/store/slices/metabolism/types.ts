@@ -19,6 +19,7 @@ export interface MetabolismState {
   current_page: number;
   last_page: number;
   error: string | null;
+  hasMore: boolean;
 }
 
 export interface MetabolismSuccessResponse {

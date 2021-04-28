@@ -7,16 +7,18 @@ import Wrapper from './wrapper';
 import { CentralizedWrapper } from './centralized-wrapper';
 import Title from './title';
 
+import { EventEnum, MetabolismEvents } from '@App/types';
+
 import {
   metabolismSelector,
   setMetabolismType,
 } from '@App/store/slices/metabolism';
-import { EventEnum, MetabolismEvents } from '@App/types';
-import { useAppDispatch, useAppSelector } from '@App/hooks/useReduxActions';
 import { globalPathSelector } from '@App/store/slices/dashboard';
 import { getMetabolismRequest } from '@App/store/slices/metabolism/action';
 
 import { formatEvent } from '@App/helper';
+import { useAppDispatch, useAppSelector } from '@App/hooks/useReduxActions';
+import { useInterSectionObserver } from '@App/hooks/useIntersectionObserver';
 
 const ContentWrapper = styled(Wrapper)`
   height: 100vh;
@@ -44,17 +46,32 @@ const options = [
 
 const Metabolism = () => {
   const dispatch = useAppDispatch();
-  const { isLoading, type, results } = useAppSelector(metabolismSelector);
+
   const path = useAppSelector(globalPathSelector);
+  const { isLoading, type, results, hasMore } = useAppSelector(
+    metabolismSelector
+  );
+
+  const [page, setPage] = React.useState(1);
+
+  const incrementPage = React.useCallback(() => {
+    setPage(page + 1);
+  }, [page]);
 
   React.useEffect(() => {
     if (path.endsWith('metabolism')) {
-      dispatch(getMetabolismRequest({ path, type }));
+      dispatch(getMetabolismRequest({ path, type, page }));
     }
-  }, [path, type]);
+  }, [path, type, page]);
+
+  const { lastElementRef } = useInterSectionObserver({
+    isLoading,
+    incrementPage,
+    hasMore,
+  });
 
   const renderContent = () => {
-    if (isLoading) {
+    if (isLoading && !results.length) {
       return (
         <CentralizedWrapper>
           <Title> Loading</Title>
@@ -70,7 +87,22 @@ const Metabolism = () => {
       );
     }
 
-    return results.map(result => {
+    return results.map((result, i) => {
+      if (results.length === i + 1) {
+        return (
+          <span ref={lastElementRef} key={result.id}>
+            <EventResultCard
+              key={result.id}
+              timeStamp={result.timestamp}
+              eventType={formatEvent(result.event_type as EventEnum)}
+              note={result.note}
+              meal={result.meal}
+              volume={result?.volume_ml}
+            />
+          </span>
+        );
+      }
+
       return (
         <EventResultCard
           key={result.id}

@@ -13,6 +13,7 @@ import { EventEnum } from '@App/types';
 
 import { formatEvent, getSeverityColor } from '@App/helper';
 import { useAppDispatch, useAppSelector } from '@App/hooks/useReduxActions';
+import { useInterSectionObserver } from '@App/hooks/useIntersectionObserver';
 
 import { getAlertRequest } from '@App/store/slices/alerts/action';
 import { globalPathSelector } from '@App/store/slices/dashboard';
@@ -33,26 +34,40 @@ const TextContentWrapper = styled(Wrapper)`
 `;
 
 const Alert = () => {
+  const dispatch = useAppDispatch();
+  const path = useAppSelector(globalPathSelector);
+
   const {
     isLoading,
     total_alert_qualified,
     total_alert_raised,
     alert_qualified,
+    hasMore,
   } = useAppSelector(alertSelector);
-  const dispatch = useAppDispatch();
-  const path = useAppSelector(globalPathSelector);
+
+  const [page, setPage] = React.useState(1);
 
   React.useEffect(() => {
     if (path.endsWith('alert')) {
-      dispatch(getAlertRequest({ path }));
+      dispatch(getAlertRequest({ path, page }));
     }
-  }, [path]);
+  }, [path, page]);
+
+  const incrementPage = React.useCallback(() => {
+    setPage(page + 1);
+  }, [page]);
+
+  const { lastElementRef } = useInterSectionObserver({
+    isLoading,
+    incrementPage,
+    hasMore,
+  });
 
   const renderQualifiedAlerts = () => {
-    if (isLoading) {
+    if (isLoading && !alert_qualified.length) {
       return (
         <TextContentWrapper>
-          <Title> Loading</Title>
+          <Title>Loading</Title>
         </TextContentWrapper>
       );
     }
@@ -65,7 +80,22 @@ const Alert = () => {
       );
     }
 
-    return alert_qualified.map(result => {
+    return alert_qualified.map((result, i) => {
+      if (alert_qualified.length === i + 1) {
+        return (
+          <span ref={lastElementRef} key={result.id}>
+            <EventResultCard
+              key={result.id}
+              timeStamp={result.timestamp}
+              eventType={formatEvent(result.event_type as EventEnum)}
+              note={result.note}
+              severity={result.alert_severity}
+              severityColor={getSeverityColor(result.alert_severity)}
+            />
+          </span>
+        );
+      }
+
       return (
         <EventResultCard
           key={result.id}
