@@ -6,6 +6,7 @@
     "@reduxjs/toolkit": "^1.5.1",
     "@types/react-router-dom": "^5.1.7",
     "axios": "^0.21.1",
+    "date-fns": "^2.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.3",
@@ -21,7 +22,8 @@
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
     "create:component": "./node_modules/hygen/lib/bin.js component create",
-    "create:store:item": "./node_modules/hygen/lib/bin.js store create"
+    "create:store:item": "./node_modules/hygen/lib/bin.js store create",
+    "cypress:open": "cypress open"
   },
   "jest": {
     "moduleNameMapper": {
@@ -38,6 +40,7 @@
     "@types/react-redux": "^7.1.16",
     "@types/redux": "^3.6.31",
     "@types/styled-components": "^5.1.9",
+    "cypress": "^7.2.0",
     "typescript": "^4.2.4"
   }
 }

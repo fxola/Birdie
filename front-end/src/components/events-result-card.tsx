@@ -5,6 +5,7 @@ import SubTitle from './sub-title';
 import Text from './text';
 import Wrapper from './wrapper';
 import { truncate } from '@App/helper';
+import { format } from 'date-fns';
 
 const Card = styled.div`
   height: auto;
@@ -12,7 +13,7 @@ const Card = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px 0 rgba(0,0,0,0.1);
   border-radius: 5px;
   padding: 0 20px 0px 20px;
   margin: 10px;
@@ -82,7 +83,12 @@ const EventResultCard = ({
     <Card>
       <RowWrapper>
         <EventWrapper>
-          <EventText style={{ width: '60%' }}>{timeStamp}</EventText>
+          <EventText style={{ width: '60%' }}>
+            {`${format(new Date(timeStamp), 'PP')} @ ${format(
+              new Date(timeStamp),
+              'p'
+            )}`}
+          </EventText>
           <EventTypeWrapper>
             <EventText>{eventType}</EventText>
           </EventTypeWrapper>

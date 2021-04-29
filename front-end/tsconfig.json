@@ -2,9 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@App/*": [
-        "src/*"
-      ]
+      "@App/*": ["src/*"]
     },
     "outDir": "build/dist",
     "module": "esnext",
@@ -31,6 +29,7 @@
     "acceptance-tests",
     "webpack",
     "jest",
-    "src/setupTests.ts"
+    "src/setupTests.ts",
+    "cypress"
   ]
 }

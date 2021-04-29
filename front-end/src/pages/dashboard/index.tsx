@@ -12,10 +12,12 @@ import MediaQueryMwssage from '@App/components/media-query-message';
 
 const Container = styled(RowWrapper)`
   height: 100%;
+  overflow: hidden;
 `;
 
 const ContentContainer = styled(Wrapper)`
   padding: 0 20px 0 20px;
+  overflow: hidden;
   @media (max-width: 767px) {
     display: none;
   }

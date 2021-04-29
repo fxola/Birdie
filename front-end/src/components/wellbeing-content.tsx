@@ -37,7 +37,7 @@ const options = [
     value: WellbeingEvents.concern_raised,
   },
   {
-    name: 'Physical helth observations',
+    name: 'Physical health observations',
     value: WellbeingEvents.physical_health_observation,
   },
 ];
