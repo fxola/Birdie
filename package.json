@@ -1,0 +1,23 @@
+{
+  "name": "birdie",
+  "version": "1.0.0",
+  "description": "Assessment",
+  "main": "backend/src/index.ts",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "build": " cd front-end && npm run build",
+    "prebuild": "cd front-end && npm install",
+    "heroku-postbuild": "npm run prebuild && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fxola/Birdie.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fxola/Birdie/issues"
+  },
+  "homepage": "https://github.com/fxola/Birdie#readme",
+  "dependencies": {}
+}

@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import RecipientCard from '@App/components/recipient-card';
 import RowWrapper from '@App/components/row-wrapper';
-import Wrapper from '@App/components/wrapper';
+import Wrapper from '@App/components/Wrapper';
 import SubTitle from '@App/components/sub-title';
-import Logo from '@App/components/logo';
+import Logo from '@App/components/Logo';
 import { LogoUrl } from '@App/constants/images';
 import MediaQueryMwssage from '@App/components/media-query-message';
 

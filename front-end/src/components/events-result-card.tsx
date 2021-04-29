@@ -2,8 +2,8 @@ import * as React from 'react';
 import styled from 'styled-components';
 import RowWrapper from './row-wrapper';
 import SubTitle from './sub-title';
-import Text from './text';
-import Wrapper from './wrapper';
+import Text from './Text';
+import Wrapper from './Wrapper';
 import { truncate } from '@App/helper';
 import { format } from 'date-fns';
 
@@ -13,7 +13,7 @@ const Card = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  box-shadow: 0 3px 10px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   padding: 0 20px 0px 20px;
   margin: 10px;

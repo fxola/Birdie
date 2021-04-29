@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Sidebar from '@App/components/side-bar';
 import RowWrapper from '@App/components/row-wrapper';
-import Wrapper from '@App/components/wrapper';
+import Wrapper from '@App/components/Wrapper';
 import { EventType } from '@App/types';
 import WellBeing from '@App/components/wellbeing-content';
 import Metabolism from '@App/components/metabolism-content';

@@ -2,7 +2,7 @@ import { LogoUrl } from '@App/constants/images';
 import * as React from 'react';
 import styled from 'styled-components';
 import { CentralizedWrapper } from './centralized-wrapper';
-import Logo from './logo';
+import Logo from './Logo';
 import SubTitle from './sub-title';
 
 const MediaQueryWrapper = styled(CentralizedWrapper)`

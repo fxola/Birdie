@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import RowWrapper from './row-wrapper';
-import Text from './text';
-import Wrapper from './wrapper';
+import Text from './Text';
+import Wrapper from './Wrapper';
 
 const Card = styled.div`
   height: 50px;

@@ -2,10 +2,10 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import EventResultCard from './events-result-card';
-import Filter from './filter';
-import Wrapper from './wrapper';
+import Filter from './Filter';
+import Wrapper from './Wrapper';
 import { CentralizedWrapper } from './centralized-wrapper';
-import Title from './title';
+import Title from './Title';
 
 import { EventEnum, MetabolismEvents } from '@App/types';
 

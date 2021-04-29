@@ -2,9 +2,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { useHistory, useLocation } from 'react-router-dom';
 
-import Text from './text';
-import Wrapper from './wrapper';
-import Logo from './logo';
+import Text from './Text';
+import Wrapper from './Wrapper';
+import Logo from './Logo';
 import SubTitle from './sub-title';
 
 import {

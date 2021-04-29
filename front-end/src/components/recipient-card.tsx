@@ -6,7 +6,7 @@ import theme from '@App/constants/colors';
 import { useAppDispatch } from '@App/hooks/useReduxActions';
 import { setDashboardPath } from '@App/store/slices/dashboard';
 
-import Text from './text';
+import Text from './Text';
 
 const Card = styled.div`
   height: 100px;
