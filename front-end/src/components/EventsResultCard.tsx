@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import RowWrapper from './row-wrapper';
-import SubTitle from './sub-title';
-import Text from './Text';
-import Wrapper from './Wrapper';
+import RowWrapper from './RowWrapper';
+import SubTitle from './Subtitle';
+import Text from './TextComponent';
+import Wrapper from './WrapperComponent';
 import { truncate } from '@App/helper';
 import { format } from 'date-fns';
 

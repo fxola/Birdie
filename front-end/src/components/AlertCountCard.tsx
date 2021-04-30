@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import Text from './Text';
+import Text from './TextComponent';
 import Title from './Title';
-import Wrapper from './Wrapper';
+import Wrapper from './WrapperComponent';
 
 const Card = styled.div`
   height: 100px;

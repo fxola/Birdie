@@ -1,6 +1,12 @@
 import Axios, { AxiosRequestConfig, Method } from 'axios';
 
-const baseURL = process.env.REACT_APP_BASE_URL!;
+const development =
+  !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+
+let baseURL = 'https://birdie-test-fxola.herokuapp.com/api/events/';
+if (development) {
+  baseURL = process.env.REACT_APP_BASE_URL!;
+}
 
 interface ClientParamType {
   path: string;

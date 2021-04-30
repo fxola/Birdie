@@ -1,14 +1,14 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import Sidebar from '@App/components/side-bar';
-import RowWrapper from '@App/components/row-wrapper';
-import Wrapper from '@App/components/Wrapper';
+import Sidebar from '@App/components/Sidebar';
+import RowWrapper from '@App/components/RowWrapper';
+import Wrapper from '@App/components/WrapperComponent';
 import { EventType } from '@App/types';
-import WellBeing from '@App/components/wellbeing-content';
-import Metabolism from '@App/components/metabolism-content';
-import Alert from '@App/components/alert-content';
-import MediaQueryMwssage from '@App/components/media-query-message';
+import WellBeing from '@App/components/WellbeingContent';
+import Metabolism from '@App/components/MetabolismContent';
+import Alert from '@App/components/AlertContent';
+import MediaQueryMwssage from '@App/components/MediaQueryMessage';
 
 const Container = styled(RowWrapper)`
   height: 100%;

@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '@App/hooks/useReduxActions';
 
 import { EventEnum, WellbeingEvents } from '@App/types';
-import EventResultCard from './events-result-card';
-import Filter from './Filter';
-import Wrapper from './Wrapper';
+import EventResultCard from './EventsResultCard';
+import Filter from './SelectFilter';
+import Wrapper from './WrapperComponent';
 import {
   setWellbeingType,
   wellbeingSelector,
@@ -15,7 +15,7 @@ import { globalPathSelector } from '@App/store/slices/dashboard';
 import { getWellbeingRequest } from '@App/store/slices/wellbeing/action';
 import Title from './Title';
 import { formatEvent } from '@App/helper';
-import { CentralizedWrapper } from './centralized-wrapper';
+import { CentralizedWrapper } from './CentralizedWrapper';
 import { useInterSectionObserver } from '@App/hooks/useIntersectionObserver';
 
 const WellBeingWrapper = styled(Wrapper)`

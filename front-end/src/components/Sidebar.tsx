@@ -2,10 +2,10 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { useHistory, useLocation } from 'react-router-dom';
 
-import Text from './Text';
-import Wrapper from './Wrapper';
+import Text from './TextComponent';
+import Wrapper from './WrapperComponent';
 import Logo from './Logo';
-import SubTitle from './sub-title';
+import SubTitle from './Subtitle';
 
 import {
   LogoUrl,

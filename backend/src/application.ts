@@ -14,10 +14,6 @@ app.use(eventsController);
 const publicPath = path.join(__dirname, '../..', 'front-end/build');
 app.use(express.static(publicPath));
 
-app.get('*', function(_, res) {
-  res.sendFile(path.join(__dirname, '../../front-end/build', 'index.html'));
-});
-
 app.get('*', (_, response: express.Response) => {
   response
     .status(404)

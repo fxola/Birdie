@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 import { alertConfirmedUrl, alertRaisedUrl } from '@App/constants/images';
 
-import AlertCountCard from './alert-count-card';
-import RowWrapper from './row-wrapper';
-import Wrapper from './Wrapper';
-import EventResultCard from './events-result-card';
+import AlertCountCard from './AlertCountCard';
+import RowWrapper from './RowWrapper';
+import Wrapper from './WrapperComponent';
+import EventResultCard from './EventsResultCard';
 import Title from './Title';
 
 import { EventEnum } from '@App/types';

@@ -4,7 +4,7 @@
   "description": "Assessment",
   "main": "backend/src/index.ts",
   "scripts": {
-    "start": "cd backend && npm start",
+    "start": "cd backend && npm install && npm start",
     "build": " cd front-end && npm run build",
     "prebuild": "cd front-end && npm install",
     "heroku-postbuild": "npm run prebuild && npm run build"

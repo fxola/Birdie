@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Wrapper from './Wrapper';
+import Wrapper from './WrapperComponent';
 
 export const CentralizedWrapper = styled(Wrapper)`
   display: flex;
